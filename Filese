@@ -1,0 +1,19 @@
+pip install requests geopy
+import requests
+
+def get_location():
+    # URL-ka Google API si aad u hesho xogta goobta
+    url = "https://www.googleapis.com/geolocation/v1/geolocate?key=YOUR_API_KEY"
+
+    response = requests.post(url)
+
+    if response.status_code == 200:
+        location_data = response.json()
+        lat = location_data['location']['lat']
+        lng = location_data['location']['lng']
+        print(f"Your location is: Latitude: {lat}, Longitude: {lng}")
+    else:
+        print("Failed to retrieve location data.")
+
+# Kacsi code-ka si aad u hesho location
+get_location()
